@@ -62,5 +62,4 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
     borderColor: 'red',
   },
-  flagged: {},
 });
