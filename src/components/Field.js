@@ -1,5 +1,5 @@
 import React from 'react'; //sempre que tiver JSX tem que ter React
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, TouchableWithoutFeedback} from 'react-native'; //não precisamos de feedback ao clicar, o feedback depende da lógica do jogo
 import params from '../params';
 import Mine from './Mine';
 import Flag from './Flag';
@@ -23,15 +23,17 @@ export default props => {
   }
 
   return (
-    <View style={styleField}>
-      {!mined && opened && nearMines > 0 ? (
-        <Text style={[styles.label, {color: color}]}>{nearMines}</Text>
-      ) : (
-        false // se não obedecer as condições, retorna falso e não renderiza nada
-      )}
-      {mined && opened ? <Mine /> : false}
-      {flagged && !opened ? <Flag /> : false}
-    </View>
+    <TouchableWithoutFeedback onPress={props.onOpen}>
+      <View style={styleField}>
+        {!mined && opened && nearMines > 0 ? (
+          <Text style={[styles.label, {color: color}]}>{nearMines}</Text>
+        ) : (
+          false // se não obedecer as condições, retorna falso e não renderiza nada
+        )}
+        {mined && opened ? <Mine /> : false}
+        {flagged && !opened ? <Flag /> : false}
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
