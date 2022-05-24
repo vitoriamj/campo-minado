@@ -119,6 +119,9 @@ const invertFlag = (board, row, column) => {
   field.flagged = !field.flagged;
 };
 
+//calcular quantas flags já foram usadas no jogo
+const flagsUsed = board => fields(board).filter(field => field.flagged).length;
+
 export {
   createMinedBoard,
   cloneBoard,
@@ -127,4 +130,5 @@ export {
   wonGame,
   showMines,
   invertFlag,
+  flagsUsed,
 };
