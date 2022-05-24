@@ -113,6 +113,12 @@ const showMines = board =>
     .filter(field => field.mined)
     .forEach(field => (field.opened = true));
 
+//marcar ou desmarcar um campo com bandeira
+const invertFlag = (board, row, column) => {
+  const field = board[row][column];
+  field.flagged = !field.flagged;
+};
+
 export {
   createMinedBoard,
   cloneBoard,
@@ -120,4 +126,5 @@ export {
   hadExplosion,
   wonGame,
   showMines,
+  invertFlag,
 };
